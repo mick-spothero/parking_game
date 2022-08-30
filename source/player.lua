@@ -4,14 +4,14 @@ import 'vectorsprite'
 Player = {}
 Player.__index = Player
 
-local maxspeed = 8
+local maxspeed = 10
 local minspeed = 0
 local currentSpeed = 0
-local turnspeed = 4
+local turnspeed = 3
 local thrustspeed = 0.4
 
 function Player:new()
-	local self = VectorSprite:new({0, 0, 18, 10})
+	local self = VectorSprite:new({0, 0, 8, 5})
 
 	self.da = 0
 	self.dx = 0
@@ -45,12 +45,12 @@ function Player:new()
 			currentSpeed += 1
 		end
 		
-
+		-- Applying breaks
 		if self.thrusting == -1 and currentSpeed > 0 then
-			currentSpeed -= 1
+			currentSpeed -= 0.25
 
 		elseif self.thrusting == -1 and currentSpeed < 0 then
-			currentSpeed += 1
+			currentSpeed += 0.25
 		end
 
 		if self.thrusting == -2 and currentSpeed > maxspeed * -1 then

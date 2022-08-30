@@ -11,8 +11,13 @@ end
 function setup()
 end
 
+local carImage = gfx.image.new('img/logo')
+local logoSprite = gfx.sprite.new(carImage)
+logoSprite:moveTo(200, 120)
+logoSprite:add()
+
 player = Player:new()
-player:moveTo(200, 120)
+player:moveTo(300, 120)
 player:setScale(3)
 player:setFillColor(gfx.kColorBlack)
 player:setStrokeColor(gfx.kColorBlack)
