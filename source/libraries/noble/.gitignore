@@ -41,6 +41,6 @@ luac.out
 
 .vscode
 
-builds/
-
-source/libraries/noble/docs/
+# LDoc config files
+config.ld
+.docs_templates/

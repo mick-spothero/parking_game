@@ -1,5 +1,5 @@
 
-import 'vectorsprite'
+import 'sprites/vectorsprite'
 
 local pd <const> = playdate
 
@@ -62,10 +62,11 @@ function Player:update()
 	-- Applying breaks
 	if self.thrusting == -1 and currentSpeed > 0 then
 		currentSpeed -= 0.25
-
 	elseif self.thrusting == -1 and currentSpeed < 0 then
 		currentSpeed += 0.25
 	end
+
+	print(currentSpeed)
 
 	if self.thrusting == -2 and currentSpeed > maxspeed * -1 then
 		currentSpeed -= 1
@@ -80,7 +81,7 @@ function Player:update()
 		dy *= maxspeed / m
 	end
 	
-	if self.thrusting == -1 and currentSpeed == 0 then
+	if  currentSpeed == 0 then
 		dx = 0
 		dy = 0
 	end

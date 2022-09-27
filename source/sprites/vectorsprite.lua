@@ -3,7 +3,11 @@ import 'CoreLibs/sprites'
 local gfx = playdate.graphics
 local geom = playdate.geometry
 
-class('VectorSprite').extends(gfx.sprite)
+class('VectorSprite').extends(NobleSprite)
+
+function hypot(x, y)
+	return math.sqrt(x * x + y * y)
+end
 
 function VectorSprite:init(verts)
 	VectorSprite.super.init(self)
