@@ -16,7 +16,7 @@ end
 
 function Time:add()
     Time.super.add(self)
-    self.time = playdate.timer.new(10000, self.finishCallback)
+    self.time = playdate.timer.new(20000, self.finishCallback)
 end
 
 function Time:update()

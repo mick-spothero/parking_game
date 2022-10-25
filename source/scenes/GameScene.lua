@@ -58,7 +58,7 @@ function GameScene:init()
 			player:reverseThrust()
 		end,
 		BButtonDown = function()
-			player:slowThrust()
+			player:applyBreaks()
 		end
 		-- cranked = function(change, acceleratedChange)
 		-- 	crankTick = crankTick + change
