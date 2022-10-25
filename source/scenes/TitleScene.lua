@@ -13,7 +13,7 @@ function TitleScene:init()
 
 	background = Graphics.image.new("assets/images/background1")
 
-	menu = Noble.Menu.new(false, Noble.Text.ALIGN_LEFT, false, Graphics.kColorWhite, 4,6,0, Noble.Text.FONT_LARGE)
+	menu = Noble.Menu.new(false, Noble.Text.ALIGN_LEFT, false, Graphics.kColorWhite, 4, 6, 0, Noble.Text.FONT_LARGE)
 
 	menu:addItem('Start Game', function() Noble.transition(GameScene, 1, Noble.TransitionType.DIP_TO_BLACK) end)
 
@@ -71,8 +71,8 @@ function TitleScene:update()
 
 	Graphics.setColor(Graphics.kColorBlack)
 	Graphics.setDitherPattern(0.2, Graphics.image.kDitherTypeScreen)
-	Graphics.fillRoundRect(15, (sequence:get()*0.75)+3, 185, 145, 15)
-	menu:draw(30, sequence:get()-15 or 100-15)
+	Graphics.fillRoundRect(15, (sequence:get() * 0.75) + 3, 185, 145, 15)
+	menu:draw(30, sequence:get() - 15 or 100 - 15)
 
 end
 

@@ -97,7 +97,7 @@ function VectorSprite:updatePosition()
 			local x, y, c, n = self:moveWithCollisions(self.x + self.dx, self.y + self.dy)
 
 			for i = 1, n do
-				self.collision(c[i].other)
+				self:collision(c[i].other)
 			end
 		else
 			self:moveTo(self.x + self.dx, self.y + self.dy)

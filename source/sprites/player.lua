@@ -12,9 +12,10 @@ local thrustspeed = 0.4
 
 class("Player").extends(VectorSprite)
 
-function Player:init(verts)
+function Player:init(game, verts)
 	Player.super.init(self, verts)
 
+	self.game = game
 	self.da = 0
 	self.dx = 0
 	self.dy = 0
@@ -32,14 +33,10 @@ function Player:turn(d)
 	self.da = turnspeed * d
 end
 
-function Player:hit()
-	print("hit!")
-end
-
 function Player:collision(other)
-	-- if other.type == "asteroid" then
-	-- 	self:hit(other)
-	-- end
+	if other.type == "spot" then
+		self.game:park()
+	end
 end
 
 function Player:update()
@@ -65,8 +62,6 @@ function Player:update()
 	elseif self.thrusting == -1 and currentSpeed < 0 then
 		currentSpeed += 0.25
 	end
-
-	print(currentSpeed)
 
 	if self.thrusting == -2 and currentSpeed > maxspeed * -1 then
 		currentSpeed -= 1

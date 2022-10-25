@@ -1,4 +1,7 @@
 import "sprites/player"
+import "sprites/spot"
+import "sprites/score"
+import "sprites/time"
 
 GameScene = {}
 class("GameScene").extends(NobleScene)
@@ -7,19 +10,26 @@ GameScene.baseColor = Graphics.kColorWhite
 
 local background
 local player
-
+local spot
+local parks
+local score
+local timer
 
 function GameScene:init()
 	GameScene.super.init(self)
 
 	background = Graphics.image.new("assets/images/logo")
-    player = Player({ 0, 0, 8, 5 })
+    player = Player(self, { 0, 0, 8, 5 })
 	player:moveTo(300, 120)
 	player:setScale(3)
 	player:setFillColor(Graphics.kColorBlack)
 	player:setStrokeColor(Graphics.kColorBlack)
 	player.wraps = 1
-	
+	parks = 0
+
+	spot = Spot()
+	score = Score()
+	timer = Time(function() Noble.transition(GameOverScene, 1, Noble.TransitionType.DIP_TO_BLACK) end)
 
     local turn = 0
 	-- local crankTick = 0
@@ -68,8 +78,11 @@ end
 
 function GameScene:enter()
 	GameScene.super.enter(self)
+end
 
-
+function GameScene:exit()
+	GameScene.super.exit(self)
+	SCORE = parks
 end
 
 function GameScene:start()
@@ -77,6 +90,17 @@ function GameScene:start()
 
 	-- Noble.Input.setCrankIndicatorStatus(true)
     player:add()
+	spot:add()
+	score:add()
+	timer:add()
+end
+
+function GameScene:park()
+	spot:remove()
+	parks = parks + 1
+	score:addOne()
+	spot = Spot()
+	spot:add()
 end
 
 function GameScene:drawBackground()
