@@ -1,6 +1,5 @@
 - Fix controls
 - Actually need to park
-- clear movement on retry.
 - Get rid of weird 30 at top left
 
 

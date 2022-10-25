@@ -14,11 +14,6 @@ function Time:init(finishCallback)
     self:moveTo(240, 40)
 end
 
-function Time:addOne()
-    self.Time = self.Time + 1
-    self:markDirty()
-end
-
 function Time:add()
     Time.super.add(self)
     self.time = playdate.timer.new(10000, self.finishCallback)

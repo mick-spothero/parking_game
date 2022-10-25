@@ -18,7 +18,7 @@ function GameScene:init()
 	GameScene.super.init(self)
 
 	background = Graphics.image.new("assets/images/logo")
-    player = Player(self, { 0, 0, 8, 5 })
+    player = Player(self)
 	player:moveTo(300, 120)
 	player:setScale(3)
 	player:setFillColor(Graphics.kColorBlack)

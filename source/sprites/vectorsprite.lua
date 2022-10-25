@@ -9,12 +9,11 @@ function hypot(x, y)
 	return math.sqrt(x * x + y * y)
 end
 
-function VectorSprite:init(verts)
+function VectorSprite:init()
 	VectorSprite.super.init(self)
 	local points = {}
 
-	self.polygon = geom.rect.new(table.unpack(verts))
-	self.polygon = self.polygon:toPolygon()
+	self.polygon = geom.polygon.new(0, 0, 8, 0, 9, 1, 9, 4, 8, 5, 0, 5, 1, 4, 1, 1, 0, 0)
 	self.drawnpolygon = polygon
 
 	self._x = 0
@@ -150,7 +149,7 @@ function VectorSprite:draw()
 		gfx.setPattern(self.strokePattern)
 		gfx.drawPolygon(self.drawnpolygon, self.strokeWidth or 0)
 	elseif self.strokeColor == gfx.kColorClear then
-		-- don't stroke
+		-- don't
 	else
 		gfx.setColor(self.strokeColor or gfx.kColorWhite)
 		gfx.drawPolygon(self.drawnpolygon, self.strokeWidth or 0)
