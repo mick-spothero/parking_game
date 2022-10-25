@@ -11,7 +11,6 @@ GameScene.baseColor = Graphics.kColorWhite
 local background
 local player
 local spot
-local parks
 local score
 local timer
 
@@ -25,7 +24,6 @@ function GameScene:init()
 	player:setFillColor(Graphics.kColorBlack)
 	player:setStrokeColor(Graphics.kColorBlack)
 	player.wraps = 1
-	parks = 0
 
 	spot = Spot()
 	score = Score()
@@ -78,17 +76,13 @@ end
 
 function GameScene:enter()
 	GameScene.super.enter(self)
-end
 
-function GameScene:exit()
-	GameScene.super.exit(self)
-	SCORE = parks
+	SCORE = 0
 end
 
 function GameScene:start()
 	GameScene.super.start(self)
 
-	-- Noble.Input.setCrankIndicatorStatus(true)
     player:add()
 	spot:add()
 	score:add()
@@ -97,7 +91,7 @@ end
 
 function GameScene:park()
 	spot:remove()
-	parks = parks + 1
+	SCORE = SCORE + 1
 	score:addOne()
 	spot = Spot()
 	spot:add()
@@ -111,15 +105,10 @@ end
 
 function GameScene:update()
 	GameScene.super.update(self)
-
 end
 
 function GameScene:exit()
 	GameScene.super.exit(self)
-
-	-- Noble.Input.setCrankIndicatorStatus(false)
-
-
 end
 
 function GameScene:finish()

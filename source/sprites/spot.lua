@@ -7,12 +7,13 @@ function Spot:init()
     Spot.super.init(self)
 
     self.type = 'spot'
-    self.xCoordinate = math.random(1, 380)
-    self.yCoordinate = math.random(1, 220)
+    self.xCoordinate = math.random(20, 380)
+    self.yCoordinate = math.random(30, 220)
 
     local spotImage = Graphics.image.new(SPOT_WIDTH, SPOT_HEIGHT)
     Graphics.pushContext(spotImage)
-    Graphics.drawRect(0, 0, SPOT_WIDTH, SPOT_HEIGHT)
+    Graphics.setColor(Graphics.kColorBlack)
+    Graphics.drawRoundRect(0, 0, SPOT_WIDTH, SPOT_HEIGHT, 5)
     Graphics.popContext()
 
     self:setCollideRect(SPOT_WIDTH / 4, SPOT_HEIGHT / 4, SPOT_WIDTH / 2, SPOT_HEIGHT / 2)

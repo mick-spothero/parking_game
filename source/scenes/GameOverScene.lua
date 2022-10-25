@@ -6,12 +6,14 @@ GameOverScene.baseColor = Graphics.kColorWhite
 local background
 local menu
 local sequence
+local logo
 
 
 function GameOverScene:init()
     GameOverScene.super.init(self)
 
     background = Graphics.image.new("assets/images/background2")
+    logo = Graphics.image.new("assets/images/logo")
 
     menu = Noble.Menu.new(false, Noble.Text.ALIGN_LEFT, false, Graphics.kColorWhite, 4, 6, 0, Noble.Text.FONT_LARGE)
 
@@ -60,11 +62,6 @@ function GameOverScene:start()
 
 end
 
-function GameScene:exit()
-    GameScene.super.exit(self)
-    SCORE = 0
-end
-
 function GameOverScene:drawBackground()
     GameOverScene.super.drawBackground(self)
 
@@ -79,6 +76,12 @@ function GameOverScene:update()
     Graphics.fillRoundRect(15, (sequence:get() * 0.75) + 3, 185, 145, 15)
     menu:draw(30, sequence:get() - 15 or 100 - 15)
 
+    logo:draw(250, 15)
+
+    Graphics.setColor(Graphics.kColorWhite)
+    Graphics.setDitherPattern(0, Graphics.image.kDitherTypeScreen)
+    Graphics.fillRoundRect(256, 160, 111, 40, 15)
+    Noble.Text.draw('SCORE: ' .. tostring(SCORE), 264, 173, Noble.Text.ALIGN_LEFT, false, Noble.Text.FONT_LARGE)
 end
 
 function GameOverScene:exit()

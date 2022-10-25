@@ -1,10 +1,8 @@
-
-- When reaches 0, game over screen with score info
-    - a to try again or b to menu
-- Branding on menu
 - Fix controls
 - Actually need to park
+- clear movement on retry.
 - Get rid of weird 30 at top left
+
 
 Optional
 - Actual car sprite

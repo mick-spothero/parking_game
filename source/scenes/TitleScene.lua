@@ -6,17 +6,18 @@ TitleScene.baseColor = Graphics.kColorWhite
 local background
 local menu
 local sequence
+local logo
 
 
 function TitleScene:init()
 	TitleScene.super.init(self)
 
 	background = Graphics.image.new("assets/images/background1")
+	logo = Graphics.image.new("assets/images/logo")
 
 	menu = Noble.Menu.new(false, Noble.Text.ALIGN_LEFT, false, Graphics.kColorWhite, 4, 6, 0, Noble.Text.FONT_LARGE)
 
 	menu:addItem('Start Game', function() Noble.transition(GameScene, 1, Noble.TransitionType.DIP_TO_BLACK) end)
-
 
 	local crankTick = 0
 
@@ -74,6 +75,7 @@ function TitleScene:update()
 	Graphics.fillRoundRect(15, (sequence:get() * 0.75) + 3, 185, 145, 15)
 	menu:draw(30, sequence:get() - 15 or 100 - 15)
 
+	logo:draw(250, 15)
 end
 
 function TitleScene:exit()
