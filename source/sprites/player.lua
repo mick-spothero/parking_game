@@ -80,7 +80,7 @@ function Player:update()
 		local collisions = self:overlappingSprites()
 	
 		if #collisions > 0 then
-			self.game:park()
+		 self.game:park()
 		end
 	end
 end

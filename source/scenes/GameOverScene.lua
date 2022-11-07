@@ -58,7 +58,7 @@ function GameOverScene:start()
     GameOverScene.super.start(self)
 
     menu:activate()
-    Noble.Input.setCrankIndicatorStatus(true)
+    -- Noble.Input.setCrankIndicatorStatus(true)
 
 end
 
@@ -82,12 +82,17 @@ function GameOverScene:update()
     Graphics.setDitherPattern(0, Graphics.image.kDitherTypeScreen)
     Graphics.fillRoundRect(256, 160, 111, 40, 15)
     Noble.Text.draw('SCORE: ' .. tostring(SCORE), 264, 173, Noble.Text.ALIGN_LEFT, false, Noble.Text.FONT_LARGE)
+
+    Graphics.setColor(Graphics.kColorWhite)
+    Graphics.setDitherPattern(0, Graphics.image.kDitherTypeScreen)
+    Graphics.fillRoundRect(15, 20, 215, 40, 15)
+    Noble.Text.draw('Great Job Driver!', 22, 33, Noble.Text.ALIGN_LEFT, false, Noble.Text.FONT_LARGE)
 end
 
 function GameOverScene:exit()
     GameOverScene.super.exit(self)
 
-    Noble.Input.setCrankIndicatorStatus(false)
+    -- Noble.Input.setCrankIndicatorStatus(false)
     sequence = Sequence.new():from(100):to(240, 0.25, Ease.inSine)
     sequence:start();
 

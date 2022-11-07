@@ -57,7 +57,7 @@ function TitleScene:start()
 	TitleScene.super.start(self)
 
 	menu:activate()
-	Noble.Input.setCrankIndicatorStatus(true)
+	-- Noble.Input.setCrankIndicatorStatus(true)
 
 end
 
@@ -75,13 +75,18 @@ function TitleScene:update()
 	Graphics.fillRoundRect(15, (sequence:get() * 0.75) + 3, 185, 145, 15)
 	menu:draw(30, sequence:get() - 15 or 100 - 15)
 
-	logo:draw(250, 15)
+	logo:draw(265, 15)
+
+	Graphics.setColor(Graphics.kColorWhite)
+	Graphics.setDitherPattern(0, Graphics.image.kDitherTypeScreen)
+	Graphics.fillRoundRect(15, 20, 230, 40, 15)
+	Noble.Text.draw('SpotHero: The Game', 22, 33, Noble.Text.ALIGN_LEFT, false, Noble.Text.FONT_LARGE)
 end
 
 function TitleScene:exit()
 	TitleScene.super.exit(self)
 
-	Noble.Input.setCrankIndicatorStatus(false)
+	-- Noble.Input.setCrankIndicatorStatus(false)
 	sequence = Sequence.new():from(100):to(240, 0.25, Ease.inSine)
 	sequence:start();
 
